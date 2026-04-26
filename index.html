@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matteo Carosi — Mountain Life Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0d0d0b;
+      --yellow: #f0c400;
+      --paper: #f2efe8;
+      --ink: #1c1a16;
+      --ink-mid: #5a5650;
+      --ink-light: #9a9690;
+      --bebas: 'Bebas Neue', sans-serif;
+      --cond: 'Barlow Condensed', sans-serif;
+      --body: 'Barlow', sans-serif;
+    }
+
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.8;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* NAV */
+    .nav {
+      background: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 3rem;
+      height: 52px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      font-family: var(--bebas);
+      font-size: 18px;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--cond);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(240,196,0,0.35);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+    .nav-links a:hover { color: rgba(240,196,0,0.6); }
+    .nav-links a.active {
+      color: rgba(240,196,0,0.7);
+      border-bottom-color: rgba(240,196,0,0.3);
+    }
+
+    /* HOME */
+    .home-hero {
+      background: var(--black);
+      padding: 7rem 3rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 7rem;
+      align-items: center;
+    }
+    .home-logo img { width: 170px; display: block; }
+    .home-text { max-width: 360px; }
+    .home-eyebrow {
+      font-family: var(--cond);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(240,196,0,0.28);
+      margin-bottom: 2.5rem;
+    }
+    .home-headline {
+      font-family: var(--bebas);
+      font-size: 50px;
+      line-height: 1.15;
+      color: var(--paper);
+      letter-spacing: 0.02em;
+      margin-bottom: 3.5rem;
+    }
+    .home-rule {
+      width: 24px;
+      height: 1px;
+      background: rgba(240,196,0,0.45);
+      margin-bottom: 2.25rem;
+    }
+    .home-sub {
+      font-size: 13px;
+      line-height: 2.1;
+      color: rgba(242,239,232,0.32);
+      letter-spacing: 0.01em;
+    }
+    .home-bottom {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(26,24,20,0.06);
+    }
+    .home-bottom-loc {
+      font-family: var(--cond);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+    .home-bottom-links { display: flex; gap: 2rem; }
+    .home-bottom-link {
+      font-family: var(--cond);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      cursor: pointer;
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.15s;
+    }
+    .home-bottom-link:hover { color: var(--ink); }
+
+    /* INNER HERO */
+    .page-hero {
+      background: var(--black);
+      padding: 5rem 3rem 4.5rem;
+    }
+    .page-label {
+      font-family: var(--cond);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(240,196,0,0.28);
+      margin-bottom: 2rem;
+      display: block;
+    }
+    .page-title {
+      font-family: var(--bebas);
+      font-size: 58px;
+      line-height: 1.0;
+      color: var(--paper);
+      letter-spacing: 0.02em;
+    }
+    .page-title span { color: var(--yellow); }
+
+    /* MLP BODY */
+    .page-body {
+      padding: 6rem 3rem 8rem;
+      max-width: 520px;
+    }
+    .prose {
+      font-size: 15px;
+      line-height: 2.2;
+      color: var(--ink-mid);
+    }
+    .prose p { margin-bottom: 2.5rem; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    /* ABOUT */
+
+    /* ABOUT PHOTO */
+    .about-photo {
+      width: 100%;
+      overflow: hidden;
+      max-height: 520px;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .about-photo img { height: 320px; }
+    }
+    .about-hero {
+      background: var(--black);
+      padding: 5rem 3rem 4.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem;
+      align-items: flex-end;
+    }
+    .about-logo img { width: 82px; display: block; opacity: 0.85; }
+    .about-name {
+      font-family: var(--bebas);
+      font-size: 58px;
+      line-height: 0.95;
+      color: var(--paper);
+      letter-spacing: 0.02em;
+    }
+    .about-role {
+      font-family: var(--cond);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(240,196,0,0.5);
+      margin-top: 0.75rem;
+    }
+    .about-body {
+      padding: 6rem 3rem 8rem;
+      display: grid;
+      grid-template-columns: 1fr 190px;
+      gap: 5rem;
+    }
+    .about-fact { margin-bottom: 2.25rem; }
+    .about-fact:last-child { margin-bottom: 0; }
+    .about-fact-key {
+      font-family: var(--cond);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 0.4rem;
+    }
+    .about-fact-val {
+      font-family: var(--cond);
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .y-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--yellow);
+      margin-right: 0.4rem;
+      vertical-align: middle;
+      opacity: 0.8;
+    }
+
+    /* CONTACT */
+    .contact-hero {
+      background: var(--black);
+      padding: 7rem 3rem 6rem;
+    }
+    .contact-email {
+      font-family: var(--bebas);
+      font-size: 40px;
+      color: var(--yellow);
+      letter-spacing: 0.04em;
+      display: block;
+    }
+    .contact-body {
+      padding: 5rem 3rem 8rem;
+      max-width: 300px;
+    }
+    .contact-links-label {
+      font-family: var(--cond);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 1.75rem;
+      display: block;
+    }
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(26,24,20,0.08);
+      text-decoration: none;
+      transition: padding-left 0.18s;
+    }
+    .contact-link:first-of-type { border-top: 1px solid rgba(26,24,20,0.08); }
+    .contact-link:hover { padding-left: 0.35rem; }
+    .contact-link-name {
+      font-family: var(--cond);
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      font-weight: 400;
+      transition: color 0.15s;
+    }
+    .contact-link:hover .contact-link-name { color: var(--ink-mid); }
+    .contact-link-arr { color: var(--ink-light); font-size: 13px; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--black);
+      padding: 1.25rem 3rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .footer span {
+      font-family: var(--cond);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(240,196,0,0.2);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+      .home-hero { grid-template-columns: 1fr; gap: 3rem; padding: 4.5rem 1.5rem; }
+      .home-logo img { width: 120px; }
+      .home-headline { font-size: 38px; }
+      .home-bottom { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+      .page-hero { padding: 4rem 1.5rem 3.5rem; }
+      .page-title { font-size: 44px; }
+      .page-body { padding: 4rem 1.5rem 6rem; }
+      .about-hero { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem 3.5rem; }
+      .about-logo img { width: 65px; }
+      .about-name { font-size: 44px; }
+      .about-body { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem 6rem; }
+      .contact-hero { padding: 5rem 1.5rem 4rem; }
+      .contact-email { font-size: 26px; }
+      .contact-body { padding: 4rem 1.5rem 6rem; }
+      .footer { padding: 1.25rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <button class="nav-brand" onclick="showPage('home',null)">Matteo Carosi</button>
+    <ul class="nav-links">
+      <li><a href="#" class="active" onclick="showPage('home',this);return false;">Home</a></li>
+      <li><a href="#" onclick="showPage('mlp',this);return false;">Mountain Life Project</a></li>
+      <li><a href="#" onclick="showPage('about',this);return false;">About</a></li>
+      <li><a href="#" onclick="showPage('contact',this);return false;">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME -->
+  <div class="page active" id="page-home">
+    <div class="home-hero">
+      <div class="home-logo">
+        <img src="logo.png" alt="Matteo Carosi — Mountain Life Project" />
+      </div>
+      <div class="home-text">
+        <p class="home-eyebrow">Pico Island · Alps · Andes</p>
+        <h1 class="home-headline">Mountain Life<br>is not an escape.<br>It's a discipline.</h1>
+        <div class="home-rule"></div>
+        <p class="home-sub">
+          Built over time.<br>
+          Not performance. Not content.
+        </p>
+      </div>
+    </div>
+    <div class="home-bottom">
+      <span class="home-bottom-loc">Pico Island — 38°N</span>
+      <div class="home-bottom-links">
+        <button class="home-bottom-link" onclick="showPage('mlp',null)">Mountain Life Project</button>
+        <button class="home-bottom-link" onclick="showPage('about',null)">About</button>
+        <button class="home-bottom-link" onclick="showPage('contact',null)">Contact</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOUNTAIN LIFE PROJECT -->
+  <div class="page" id="page-mlp">
+    <div class="page-hero">
+      <span class="page-label">The Project</span>
+      <h2 class="page-title">Mountain<br><span>Life</span><br>Project</h2>
+    </div>
+    <div class="page-body">
+      <div class="prose">
+        <p>This is not an adventure project. Not content.<br>Not a challenge to complete.</p>
+        <p>It is an ongoing practice.<br>A way of orienting life around the mountain.</p>
+        <p>Its rhythms. Its demands.<br>Its refusal to negotiate with ego or urgency.</p>
+        <p>The mountain is not a backdrop.<br>It is the condition under which everything else is understood.</p>
+        <p>Long-term and deliberate.<br>Not peak-bagging. Not performance.</p>
+        <p>What matters is the return.<br>Without expectation. Moving with the terrain, not against it.</p>
+        <p>Consistency over intensity.<br>The summit, when it comes, is incidental.</p>
+      </div>
+    </div>
+    <div class="footer">
+      <span>matteocarosi.com</span>
+      <span>Mountain Life Project</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="page" id="page-about">
+    <div class="about-hero">
+      <div class="about-logo">
+        <img src="logo.png" alt="Matteo Carosi" />
+      </div>
+      <div>
+        <h2 class="about-name">Matteo<br>Carosi</h2>
+        <p class="about-role">Mountain Guide · Pico Island</p>
+      </div>
+    </div>
+    <div class="about-photo">
+      <img src="photo.jpg" alt="" />
+    </div>
+    <div class="about-body">
+      <div class="prose">
+        <p>Based in the Azores.<br>Working on Mount Pico since 2015.</p>
+        <p>Years of consistent practice, across conditions and seasons.</p>
+        <p>Experience is not accumulation. It is attention, responsibility, and the ability to read situations clearly.</p>
+        <p>Work extends across different mountain environments, including the Alps and Andes.</p>
+        <p>The mountain sets the terms.<br>Everything else follows.</p>
+      </div>
+      <div class="about-facts">
+        <div class="about-fact">
+          <p class="about-fact-key">Base</p>
+          <p class="about-fact-val">Pico Island, Azores</p>
+        </div>
+        <div class="about-fact">
+          <p class="about-fact-key">Role</p>
+          <p class="about-fact-val">Mountain Guide</p>
+        </div>
+        <div class="about-fact">
+          <p class="about-fact-key">Mountains</p>
+          <p class="about-fact-val">Pico · Alps · Andes<br>Atlas · Iberian</p>
+        </div>
+        <div class="about-fact">
+          <p class="about-fact-key">Affiliation</p>
+          <p class="about-fact-val"><span class="y-dot"></span>Tripix Azores</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>matteocarosi.com</span>
+      <span>About</span>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="page" id="page-contact">
+    <div class="contact-hero">
+      <span class="page-label">Contact</span>
+      <span class="contact-email">hello@matteocarosi.com</span>
+    </div>
+    <div class="contact-body">
+      <span class="contact-links-label">Elsewhere</span>
+      <a class="contact-link" href="https://instagram.com" target="_blank">
+        <span class="contact-link-name">Instagram</span>
+        <span class="contact-link-arr">→</span>
+      </a>
+      <a class="contact-link" href="https://strava.com" target="_blank">
+        <span class="contact-link-name">Strava</span>
+        <span class="contact-link-arr">→</span>
+      </a>
+      <a class="contact-link" href="https://tripixazores.com" target="_blank">
+        <span class="contact-link-name">Tripix Azores</span>
+        <span class="contact-link-arr">→</span>
+      </a>
+    </div>
+    <div class="footer">
+      <span>matteocarosi.com</span>
+      <span>Contact</span>
+    </div>
+  </div>
+
+  <script>
+    function showPage(id, el) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + id).classList.add('active');
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      window.scrollTo(0, 0);
+      if (el) { el.classList.add('active'); return; }
+      const map = { home:0, mlp:1, about:2, contact:3 };
+      const links = document.querySelectorAll('.nav-links a');
+      if (links[map[id]]) links[map[id]].classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
