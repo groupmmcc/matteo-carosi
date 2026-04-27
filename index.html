@@ -307,6 +307,51 @@
       .contact-body { padding: 4rem 1.5rem 6rem; }
       .footer { padding: 1.25rem 1.5rem; }
     }
+
+    /* HAMBURGER MENU */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--yellow);
+      transition: all 0.2s;
+    }
+    .nav-mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--black);
+      border-top: 1px solid rgba(240,196,0,0.1);
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      font-family: var(--cond);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(240,196,0,0.45);
+      text-decoration: none;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid rgba(240,196,0,0.07);
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .nav-mobile-menu a:hover,
+    .nav-mobile-menu a.active { color: var(--yellow); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav { height: 52px; }
+    }
   </style>
 </head>
 <body>
@@ -319,7 +364,16 @@
       <li><a href="#" onclick="showPage('about',this);return false;">About</a></li>
       <li><a href="#" onclick="showPage('contact',this);return false;">Contact</a></li>
     </ul>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <a href="#" class="active" onclick="showPageMobile('home',this);return false;">Home</a>
+    <a href="#" onclick="showPageMobile('mlp',this);return false;">Mountain Life Project</a>
+    <a href="#" onclick="showPageMobile('about',this);return false;">About</a>
+    <a href="#" onclick="showPageMobile('contact',this);return false;">Contact</a>
+  </div>
 
   <!-- HOME -->
   <div class="page active" id="page-home">
@@ -444,6 +498,15 @@
   </div>
 
   <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function showPageMobile(id, el) {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.querySelectorAll('.nav-mobile-menu a').forEach(a => a.classList.remove('active'));
+      if (el) el.classList.add('active');
+      showPage(id, null);
+    }
     function showPage(id, el) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('page-' + id).classList.add('active');
