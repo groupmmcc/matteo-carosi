@@ -3,7 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matteo Carosi — Mountain Life Project</title>
+  <title>Matteo Carosi — Professional Mountain Guide, Pico Island</title>
+  <meta name="description" content="Professional mountain guide based on Pico Island, Azores. Working on Mount Pico since 2015 and founder of Tripix Azores." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Matteo Carosi — Professional Mountain Guide" />
+  <meta property="og:description" content="Professional mountain guide based on Pico Island, Azores. Working on Mount Pico since 2015." />
+  <meta property="og:url" content="https://www.matteocarosi.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.matteocarosi.com/photo.jpg" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Matteo Carosi",
+    "url": "https://www.matteocarosi.com/",
+    "jobTitle": "Professional Mountain Guide",
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Pico Island, Azores, Portugal"
+    },
+    "founder": {
+      "@type": "Organization",
+      "name": "Tripix Azores",
+      "url": "https://tripixazores.com/"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Tripix Azores",
+      "url": "https://tripixazores.com/"
+    }
+  }
+  </script>
+
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,7 +61,7 @@
       background: var(--paper);
       color: var(--ink);
       font-family: var(--body);
-      font-weight: 300;
+      font-weight: 400;
       font-size: 15px;
       line-height: 1.8;
       -webkit-font-smoothing: antialiased;
@@ -53,6 +87,7 @@
       font-size: 18px;
       letter-spacing: 0.1em;
       color: var(--yellow);
+      opacity: 1;
       cursor: pointer;
       background: none;
       border: none;
@@ -64,18 +99,56 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(240,196,0,0.35);
+      color: rgba(240,196,0,0.65);
       text-decoration: none;
       cursor: pointer;
       transition: color 0.2s;
       padding-bottom: 2px;
       border-bottom: 1px solid transparent;
     }
-    .nav-links a:hover { color: rgba(240,196,0,0.6); }
+    .nav-links a:hover { color: rgba(240,196,0,0.85); }
     .nav-links a.active {
-      color: rgba(240,196,0,0.75);
-      border-bottom-color: rgba(240,196,0,0.3);
+      color: rgba(240,196,0,1);
+      border-bottom-color: rgba(240,196,0,0.75);
     }
+
+    /* HAMBURGER */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--yellow);
+    }
+    .nav-mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--black);
+      border-top: 1px solid rgba(240,196,0,0.1);
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      font-family: var(--cond);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(240,196,0,0.7);
+      text-decoration: none;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid rgba(240,196,0,0.07);
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .nav-mobile-menu a:hover,
+    .nav-mobile-menu a.active { color: var(--yellow); }
 
     /* HOME */
     .home-hero {
@@ -88,6 +161,14 @@
     }
     .home-logo img { width: 170px; display: block; }
     .home-text { max-width: 500px; }
+    .home-eyebrow {
+      font-family: var(--cond);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(240,196,0,0.5);
+      margin-bottom: 2rem;
+    }
     .home-headline {
       font-family: var(--bebas);
       font-size: 50px;
@@ -100,10 +181,9 @@
     .home-sub {
       font-size: 13px;
       line-height: 2.1;
-      color: rgba(242,239,232,0.35);
+      color: rgba(242,239,232,0.55);
       letter-spacing: 0.01em;
     }
-
     .home-bottom {
       padding: 1.25rem 3rem;
       display: flex;
@@ -144,7 +224,7 @@
       font-size: 10px;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(240,196,0,0.3);
+      color: rgba(240,196,0,0.75);
       margin-bottom: 2rem;
       display: block;
     }
@@ -164,7 +244,7 @@
     .prose {
       font-size: 15px;
       line-height: 2.2;
-      color: var(--ink-mid);
+      color: #3d3b37;
     }
     .prose p { margin-bottom: 2.5rem; }
     .prose p:last-child { margin-bottom: 0; }
@@ -191,7 +271,7 @@
       font-size: 11px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(240,196,0,0.55);
+      color: rgba(240,196,0,0.75);
       margin-top: 0.75rem;
     }
     .about-photo { width: 100%; overflow: hidden; max-height: 520px; }
@@ -218,6 +298,13 @@
       color: var(--ink);
       line-height: 1.6;
     }
+    .about-fact-val a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(26,24,20,0.2);
+      transition: border-color 0.15s;
+    }
+    .about-fact-val a:hover { border-bottom-color: var(--ink); }
     .y-dot {
       display: inline-block;
       width: 6px; height: 6px;
@@ -226,6 +313,13 @@
       vertical-align: middle;
       opacity: 0.8;
     }
+    .prose a {
+      color: #3d3b37;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(90,86,80,0.3);
+      transition: border-color 0.15s;
+    }
+    .prose a:hover { border-bottom-color: #3d3b37; }
 
     /* CONTACT */
     .contact-hero {
@@ -268,7 +362,15 @@
       font-weight: 400;
       transition: color 0.15s;
     }
-    .contact-link:hover .contact-link-name { color: var(--ink-mid); }
+    .contact-link-sub {
+      font-family: var(--cond);
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      color: var(--ink-light);
+      margin-top: 0.15rem;
+    }
+    .contact-link-left { display: flex; flex-direction: column; }
+    .contact-link:hover .contact-link-name { color: #3d3b37; }
     .contact-link-arr { color: var(--ink-light); font-size: 13px; }
 
     /* FOOTER */
@@ -283,74 +385,30 @@
       font-size: 10px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(240,196,0,0.2);
+      color: rgba(240,196,0,0.45);
     }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .nav { padding: 0 1.5rem; }
-      .nav-links { gap: 1.25rem; }
-      .home-hero { grid-template-columns: 1fr; gap: 3rem; padding: 4.5rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .home-hero { grid-template-columns: 1fr; gap: 3rem; padding: 4.5rem 1.5rem 6rem; }
       .home-logo img { width: 120px; }
       .home-headline { font-size: 38px; }
-      .home-bottom { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+      .home-bottom { padding: 1.25rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
       .page-hero { padding: 4rem 1.5rem 3.5rem; }
       .page-title { font-size: 44px; }
       .page-body { padding: 4rem 1.5rem 6rem; }
       .about-hero { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem 3.5rem; }
-      .about-logo img { width: 65px; }
-      .about-name { font-size: 44px; }
+      .about-logo img { width: 100px; }
+      .about-name { font-size: 52px; }
       .about-photo img { height: 300px; }
       .about-body { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem 6rem; }
       .contact-hero { padding: 5rem 1.5rem 4rem; }
       .contact-email { font-size: 26px; }
       .contact-body { padding: 4rem 1.5rem 6rem; }
       .footer { padding: 1.25rem 1.5rem; }
-    }
-
-    /* HAMBURGER MENU */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--yellow);
-      transition: all 0.2s;
-    }
-    .nav-mobile-menu {
-      display: none;
-      flex-direction: column;
-      background: var(--black);
-      border-top: 1px solid rgba(240,196,0,0.1);
-    }
-    .nav-mobile-menu.open { display: flex; }
-    .nav-mobile-menu a {
-      font-family: var(--cond);
-      font-size: 13px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(240,196,0,0.45);
-      text-decoration: none;
-      padding: 1.1rem 1.5rem;
-      border-bottom: 1px solid rgba(240,196,0,0.07);
-      cursor: pointer;
-      transition: color 0.15s;
-    }
-    .nav-mobile-menu a:hover,
-    .nav-mobile-menu a.active { color: var(--yellow); }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      .nav { height: 52px; }
     }
   </style>
 </head>
@@ -382,6 +440,7 @@
         <img src="logo.png" alt="Matteo Carosi — Mountain Life Project" />
       </div>
       <div class="home-text">
+        <p class="home-eyebrow">Pico Island · Mount Pico · Alps · Andes</p>
         <h1 class="home-headline">Mountain Life<br>is not an escape.<br>It's a discipline.</h1>
         <div class="home-rule"></div>
         <p class="home-sub">
@@ -431,18 +490,19 @@
       </div>
       <div>
         <h2 class="about-name">Matteo<br>Carosi</h2>
-        <p class="about-role">Mountain Guide · Pico Island</p>
+        <p class="about-role">Professional Mountain Guide · Pico Island</p>
       </div>
     </div>
     <div class="about-photo">
-      <img src="photo.jpg" alt="" />
+      <img src="photo.jpg" alt="Matteo Carosi on the summit of Mount Pico, Azores" />
     </div>
     <div class="about-body">
       <div class="prose">
-        <p>Based in the Azores.<br>Working on Mount Pico since 2015.<br>In all conditions and seasons.</p>
+        <p>Based on Pico Island, in the Azores. Working professionally on Mount Pico since 2015 — in all conditions and seasons.</p>
         <p>Years of consistent practice, across conditions and seasons.</p>
         <p>Experience is not accumulation. It is attention, responsibility, and the ability to read situations clearly.</p>
-        <p>Work extends across different mountain environments, including the Alps and Andes.</p>
+        <p>Work extends across different mountain environments, including the Alps and Andes. More than 1,000 ascents of Mount Pico, Portugal's highest mountain.</p>
+        <p>In 2015, Matteo founded <a href="https://tripixazores.com/" target="_blank" rel="noopener">Tripix Azores</a> — a local company specialising in guided climbs on Mount Pico. Through Tripix, the team has guided more than 10,000 participants on the mountain.</p>
         <p>The mountain sets the terms.<br>Everything else follows.</p>
       </div>
       <div class="about-facts">
@@ -452,15 +512,19 @@
         </div>
         <div class="about-fact">
           <p class="about-fact-key">Role</p>
-          <p class="about-fact-val">Mountain Guide</p>
+          <p class="about-fact-val">Professional Mountain Guide</p>
+        </div>
+        <div class="about-fact">
+          <p class="about-fact-key">Since</p>
+          <p class="about-fact-val">2015</p>
         </div>
         <div class="about-fact">
           <p class="about-fact-key">Mountains</p>
           <p class="about-fact-val">Pico · Alps · Andes<br>Atlas · Iberian</p>
         </div>
         <div class="about-fact">
-          <p class="about-fact-key">Affiliation</p>
-          <p class="about-fact-val"><span class="y-dot"></span>Tripix Azores</p>
+          <p class="about-fact-key">Founded</p>
+          <p class="about-fact-val"><span class="y-dot"></span><a href="https://tripixazores.com/" target="_blank" rel="noopener">Tripix Azores</a> (2015)</p>
         </div>
       </div>
     </div>
@@ -479,15 +543,22 @@
     <div class="contact-body">
       <span class="contact-links-label">Elsewhere</span>
       <a class="contact-link" href="https://instagram.com" target="_blank">
-        <span class="contact-link-name">Instagram</span>
+        <div class="contact-link-left">
+          <span class="contact-link-name">Instagram</span>
+        </div>
         <span class="contact-link-arr">→</span>
       </a>
       <a class="contact-link" href="https://strava.com" target="_blank">
-        <span class="contact-link-name">Strava</span>
+        <div class="contact-link-left">
+          <span class="contact-link-name">Strava</span>
+        </div>
         <span class="contact-link-arr">→</span>
       </a>
-      <a class="contact-link" href="https://tripixazores.com" target="_blank">
-        <span class="contact-link-name">Tripix Azores</span>
+      <a class="contact-link" href="https://tripixazores.com/" target="_blank" rel="noopener">
+        <div class="contact-link-left">
+          <span class="contact-link-name">Tripix Azores</span>
+          <span class="contact-link-sub">guided climbs on Mount Pico</span>
+        </div>
         <span class="contact-link-arr">→</span>
       </a>
     </div>
@@ -521,5 +592,6 @@
 
   <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
   <script defer src="https://va.vercel-scripts.com/v1/speed-insights/script.js"></script>
+
 </body>
 </html>
