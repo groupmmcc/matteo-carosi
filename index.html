@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matteo Carosi — Professional Mountain Guide, Pico Island</title>
-  <meta name="description" content="Professional mountain guide based on Pico Island, Azores. Working on Mount Pico since 2015 and founder of Tripix Azores." />
+  <title>Matteo Carosi | Professional Mountain Guide · Mount Pico</title>
+  <meta name="description" content="Matteo Carosi is a professional mountain guide based on Pico Island, working on Mount Pico since 2015 with more than 1,000 ascents and experience across the Alps and Andes." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Matteo Carosi — Professional Mountain Guide" />
@@ -50,7 +50,7 @@
       --yellow: #f0c400;
       --paper: #f2efe8;
       --ink: #1c1a16;
-      --ink-mid: #5a5650;
+      --ink-mid: #3d3b37;
       --ink-light: #9a9690;
       --bebas: 'Bebas Neue', sans-serif;
       --cond: 'Barlow Condensed', sans-serif;
@@ -87,7 +87,6 @@
       font-size: 18px;
       letter-spacing: 0.1em;
       color: var(--yellow);
-      opacity: 1;
       cursor: pointer;
       background: none;
       border: none;
@@ -109,7 +108,7 @@
     .nav-links a:hover { color: rgba(240,196,0,0.85); }
     .nav-links a.active {
       color: rgba(240,196,0,1);
-      border-bottom-color: rgba(240,196,0,0.75);
+      border-bottom-color: rgba(240,196,0,0.4);
     }
 
     /* HAMBURGER */
@@ -224,7 +223,7 @@
       font-size: 10px;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(240,196,0,0.75);
+      color: rgba(240,196,0,0.55);
       margin-bottom: 2rem;
       display: block;
     }
@@ -244,10 +243,17 @@
     .prose {
       font-size: 15px;
       line-height: 2.2;
-      color: #3d3b37;
+      color: var(--ink-mid);
     }
     .prose p { margin-bottom: 2.5rem; }
     .prose p:last-child { margin-bottom: 0; }
+    .prose a {
+      color: var(--ink-mid);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(61,59,55,0.3);
+      transition: border-color 0.15s;
+    }
+    .prose a:hover { border-bottom-color: var(--ink-mid); }
 
     /* ABOUT */
     .about-hero {
@@ -276,12 +282,14 @@
     }
     .about-photo { width: 100%; overflow: hidden; max-height: 520px; }
     .about-photo img { width: 100%; height: 520px; object-fit: cover; object-position: center 20%; display: block; }
+
     .about-body {
-      padding: 6rem 3rem 8rem;
+      padding: 6rem 3rem 4rem;
       display: grid;
       grid-template-columns: 1fr 190px;
       gap: 5rem;
     }
+
     .about-fact { margin-bottom: 2.25rem; }
     .about-fact:last-child { margin-bottom: 0; }
     .about-fact-key {
@@ -313,13 +321,52 @@
       vertical-align: middle;
       opacity: 0.8;
     }
-    .prose a {
-      color: #3d3b37;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(90,86,80,0.3);
-      transition: border-color 0.15s;
+
+    /* MOUNTAIN EXPERIENCE BLOCK */
+    .mountain-exp {
+      padding: 0 3rem 8rem;
+      max-width: 700px;
     }
-    .prose a:hover { border-bottom-color: #3d3b37; }
+    .mountain-exp-label {
+      font-family: var(--cond);
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 2rem;
+      display: block;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(26,24,20,0.08);
+    }
+    .mountain-exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .mountain-exp-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(26,24,20,0.06);
+      padding-right: 2rem;
+    }
+    .mountain-exp-item:nth-child(even) {
+      padding-right: 0;
+      padding-left: 2rem;
+      border-left: 1px solid rgba(26,24,20,0.06);
+    }
+    .mountain-exp-place {
+      font-family: var(--cond);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+    .mountain-exp-detail {
+      font-family: var(--cond);
+      font-size: 12px;
+      color: var(--ink-light);
+      line-height: 1.5;
+    }
 
     /* CONTACT */
     .contact-hero {
@@ -354,6 +401,7 @@
     }
     .contact-link:first-of-type { border-top: 1px solid rgba(26,24,20,0.08); }
     .contact-link:hover { padding-left: 0.35rem; }
+    .contact-link-left { display: flex; flex-direction: column; }
     .contact-link-name {
       font-family: var(--cond);
       font-size: 15px;
@@ -369,8 +417,7 @@
       color: var(--ink-light);
       margin-top: 0.15rem;
     }
-    .contact-link-left { display: flex; flex-direction: column; }
-    .contact-link:hover .contact-link-name { color: #3d3b37; }
+    .contact-link:hover .contact-link-name { color: var(--ink-mid); }
     .contact-link-arr { color: var(--ink-light); font-size: 13px; }
 
     /* FOOTER */
@@ -404,7 +451,10 @@
       .about-logo img { width: 100px; }
       .about-name { font-size: 52px; }
       .about-photo img { height: 300px; }
-      .about-body { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem 6rem; }
+      .about-body { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem 3rem; }
+      .mountain-exp { padding: 0 1.5rem 6rem; }
+      .mountain-exp-grid { grid-template-columns: 1fr; }
+      .mountain-exp-item:nth-child(even) { padding-left: 0; border-left: none; }
       .contact-hero { padding: 5rem 1.5rem 4rem; }
       .contact-email { font-size: 26px; }
       .contact-body { padding: 4rem 1.5rem 6rem; }
@@ -498,11 +548,12 @@
     </div>
     <div class="about-body">
       <div class="prose">
-        <p>Based on Pico Island, in the Azores. Working professionally on Mount Pico since 2015 — in all conditions and seasons.</p>
-        <p>Years of consistent practice, across conditions and seasons.</p>
+        <p>Born in Angola to an Italian mother and a Portuguese father, Matteo grew up between different cultures and landscapes. His relationship with the mountains began early, shaped by time spent in the Italian Alps with his grandfather, while summers on Pico Island created a lasting connection with the Azores.</p>
+        <p>After studying Tourism, he moved permanently to Pico in 2014. The following year, he founded Tripix Azores and began building his professional life around Mount Pico.</p>
+        <p>Based on Pico Island, Matteo has worked professionally on Mount Pico since 2015, across conditions and seasons. He has completed more than 1,000 ascents of Portugal's highest mountain and accumulated thousands of hours guiding on its terrain.</p>
         <p>Experience is not accumulation. It is attention, responsibility, and the ability to read situations clearly.</p>
-        <p>Work extends across different mountain environments, including the Alps and Andes. More than 1,000 ascents of Mount Pico, Portugal's highest mountain.</p>
-        <p>In 2015, Matteo founded <a href="https://tripixazores.com/" target="_blank" rel="noopener">Tripix Azores</a> — a local company specialising in guided climbs on Mount Pico. Through Tripix, the team has guided more than 10,000 participants on the mountain.</p>
+        <p>His mountain experience extends beyond Pico to different environments and altitudes, including the Alps, the Atlas Mountains, the Andes and the Iberian Peninsula. Technical development has included ice climbing in Südtirol, rock climbing and high-altitude expeditions.</p>
+        <p>In 2015, Matteo founded <a href="https://tripixazores.com/" target="_blank" rel="noopener">Tripix Azores</a> — a Pico Island-based company specialising in professionally guided Mount Pico climbs. Through Tripix, the team has guided more than 10,000 participants on the mountain. Matteo continues to lead the company while working actively as a mountain guide.</p>
         <p>The mountain sets the terms.<br>Everything else follows.</p>
       </div>
       <div class="about-facts">
@@ -512,11 +563,11 @@
         </div>
         <div class="about-fact">
           <p class="about-fact-key">Role</p>
-          <p class="about-fact-val">Professional Mountain Guide</p>
+          <p class="about-fact-val">Professional Mountain Guide<br>Founder &amp; CEO, Tripix Azores</p>
         </div>
         <div class="about-fact">
           <p class="about-fact-key">Since</p>
-          <p class="about-fact-val">2015</p>
+          <p class="about-fact-val">Working professionally on<br>Mount Pico since 2015</p>
         </div>
         <div class="about-fact">
           <p class="about-fact-key">Mountains</p>
@@ -524,10 +575,38 @@
         </div>
         <div class="about-fact">
           <p class="about-fact-key">Founded</p>
-          <p class="about-fact-val"><span class="y-dot"></span><a href="https://tripixazores.com/" target="_blank" rel="noopener">Tripix Azores</a> (2015)</p>
+          <p class="about-fact-val"><span class="y-dot"></span><a href="https://tripixazores.com/" target="_blank" rel="noopener">Tripix Azores</a> · 2015</p>
         </div>
       </div>
     </div>
+
+    <!-- SELECTED MOUNTAIN EXPERIENCE -->
+    <div class="mountain-exp">
+      <span class="mountain-exp-label">Selected Mountain Experience</span>
+      <div class="mountain-exp-grid">
+        <div class="mountain-exp-item">
+          <p class="mountain-exp-place">Mount Pico, Azores</p>
+          <p class="mountain-exp-detail">Professional guiding and training ground since 2015.<br>1,000+ ascents.</p>
+        </div>
+        <div class="mountain-exp-item">
+          <p class="mountain-exp-place">Atlas Mountains</p>
+          <p class="mountain-exp-detail">Toubkal — 4,100 m · 2018</p>
+        </div>
+        <div class="mountain-exp-item">
+          <p class="mountain-exp-place">Andes</p>
+          <p class="mountain-exp-detail">Ecuador — Cayambe, Cotopaxi<br>and Chimborazo · 2020</p>
+        </div>
+        <div class="mountain-exp-item">
+          <p class="mountain-exp-place">Alps</p>
+          <p class="mountain-exp-detail">Gran Paradiso and Mont Blanc · 2025<br>Ice climbing training, Südtirol · 2019</p>
+        </div>
+        <div class="mountain-exp-item">
+          <p class="mountain-exp-place">Iberian Peninsula</p>
+          <p class="mountain-exp-detail">La Galana · Mulhacén · 2024–2025</p>
+        </div>
+      </div>
+    </div>
+
     <div class="footer">
       <span>matteocarosi.com</span>
       <span>About</span>
@@ -557,7 +636,7 @@
       <a class="contact-link" href="https://tripixazores.com/" target="_blank" rel="noopener">
         <div class="contact-link-left">
           <span class="contact-link-name">Tripix Azores</span>
-          <span class="contact-link-sub">guided climbs on Mount Pico</span>
+          <span class="contact-link-sub">Professionally guided Mount Pico climbs</span>
         </div>
         <span class="contact-link-arr">→</span>
       </a>
