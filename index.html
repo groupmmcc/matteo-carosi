@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Matteo Carosi | Professional Mountain Guide · Mount Pico</title>
-  <meta name="description" content="Matteo Carosi is a professional mountain guide based on Pico Island, working on Mount Pico since 2015 with more than 1,000 ascents and experience across the Alps and Andes." />
+  <meta name="description" content="Matteo Carosi is a professional mountain guide based on Pico Island, working on Mount Pico since 2015 with more than 1,040 ascents and experience across the Alps, Andes, Atlas Mountains and Iberian Peninsula." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Matteo Carosi — Professional Mountain Guide" />
-  <meta property="og:description" content="Professional mountain guide based on Pico Island, Azores. Working on Mount Pico since 2015." />
+  <meta property="og:description" content="Professional mountain guide based on Pico Island, Azores. Working on Mount Pico since 2015 and founder of Tripix Azores." />
   <meta property="og:url" content="https://www.matteocarosi.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.matteocarosi.com/photo.jpg" />
@@ -36,8 +36,9 @@
       "url": "https://tripixazores.com/"
     },
     "sameAs": [
-      "https://www.instagram.com/matteocarosi",
-      "https://www.strava.com/athletes/matteocarosi"
+      "https://www.instagram.com/matteocarosi_",
+      "https://www.strava.com/athletes/3472659",
+      "https://www.linkedin.com/in/matteocarosi/"
     ]
   }
   </script>
@@ -324,6 +325,53 @@
       opacity: 0.8;
     }
 
+    /* MOUNTAIN EXPERIENCE BLOCK */
+    .mountain-exp {
+      padding: 0 3rem 6rem;
+      max-width: 560px;
+    }
+    .mountain-exp-label {
+      font-family: var(--cond);
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 2.5rem;
+      display: block;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(26,24,20,0.08);
+    }
+    .mtn-region {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(26,24,20,0.06);
+    }
+    .mtn-region:last-child { border-bottom: none; }
+    .mtn-region-name {
+      font-family: var(--cond);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding-top: 0.15rem;
+    }
+    .mtn-region-detail {
+      font-family: var(--cond);
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.8;
+    }
+    .mtn-region-detail span {
+      display: block;
+    }
+    .mtn-region-detail .mtn-year {
+      font-size: 10px;
+      color: var(--ink-light);
+      letter-spacing: 0.08em;
+    }
+
     /* CONTACT */
     .contact-hero {
       background: var(--black);
@@ -408,6 +456,8 @@
       .about-name { font-size: 52px; }
       .about-photo img { height: 300px; }
       .about-body { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem 6rem; }
+      .mountain-exp { padding: 0 1.5rem 5rem; }
+      .mtn-region { grid-template-columns: 100px 1fr; }
       .contact-hero { padding: 5rem 1.5rem 4rem; }
       .contact-email { font-size: 26px; }
       .contact-body { padding: 4rem 1.5rem 6rem; }
@@ -503,9 +553,9 @@
       <div class="prose">
         <p>Born in Angola to an Italian mother and a Portuguese father, Matteo developed an early relationship with the mountains through time spent in the Italian Alps with his grandfather. At the same time, summers on Pico Island created a lasting connection with the Azores.</p>
         <p>After studying Tourism, he moved permanently to Pico in 2014. In 2015, he founded Tripix Azores and began building his professional life around Mount Pico.</p>
-        <p>Based on Pico Island, Matteo has worked professionally on Mount Pico since 2015, across conditions and seasons. He has completed more than 1,000 ascents of Portugal's highest mountain and accumulated thousands of hours working on its terrain.</p>
+        <p>Based on Pico Island, Matteo has worked professionally on Mount Pico since 2015, across conditions and seasons. He has completed more than 1,040 ascents of Portugal's highest mountain and accumulated thousands of hours guiding on its terrain.</p>
         <p>Experience is not accumulation. It is attention, responsibility, and the ability to read situations clearly.</p>
-        <p>His mountain experience also extends to different environments and altitudes across the Alps, Andes, Atlas Mountains and Iberian Peninsula.</p>
+        <p>His mountain experience extends beyond Pico to different environments and altitudes, including the Alps, the Atlas Mountains, the Andes and the Iberian Peninsula. Technical development has included ice climbing in Südtirol, rock climbing and high-altitude expeditions.</p>
         <p>In 2015, Matteo founded <a href="https://tripixazores.com/" target="_blank" rel="noopener">Tripix Azores</a> — a Pico Island-based company specialising in professionally guided Mount Pico climbs. Through Tripix, the team has guided more than 10,000 participants on the mountain. Matteo continues to lead the company while working actively as a professional mountain guide.</p>
         <p>The mountain sets the terms.<br>Everything else follows.</p>
       </div>
@@ -532,6 +582,51 @@
         </div>
       </div>
     </div>
+
+    <!-- SELECTED MOUNTAIN EXPERIENCE -->
+    <div class="mountain-exp">
+      <span class="mountain-exp-label">Selected Mountain Experience</span>
+      <div class="mtn-region">
+        <span class="mtn-region-name">Mount Pico</span>
+        <div class="mtn-region-detail">
+          <span>Portugal's highest mountain · Azores</span>
+          <span class="mtn-year">Professional guiding ground since 2015 · 1,040+ ascents</span>
+        </div>
+      </div>
+      <div class="mtn-region">
+        <span class="mtn-region-name">Atlas</span>
+        <div class="mtn-region-detail">
+          <span>Toubkal · 4,167 m · Morocco</span>
+          <span class="mtn-year">2018</span>
+        </div>
+      </div>
+      <div class="mtn-region">
+        <span class="mtn-region-name">Alps</span>
+        <div class="mtn-region-detail">
+          <span>Ice climbing · Solda, Südtirol</span>
+          <span class="mtn-year">2019</span>
+          <span style="margin-top:0.4rem;">Gran Paradiso · Mont Blanc</span>
+          <span class="mtn-year">2025</span>
+        </div>
+      </div>
+      <div class="mtn-region">
+        <span class="mtn-region-name">Andes</span>
+        <div class="mtn-region-detail">
+          <span>Cayambe · Cotopaxi · Chimborazo · Ecuador</span>
+          <span class="mtn-year">2020</span>
+        </div>
+      </div>
+      <div class="mtn-region">
+        <span class="mtn-region-name">Iberian</span>
+        <div class="mtn-region-detail">
+          <span>La Galana · Sierra de Gredos</span>
+          <span class="mtn-year">2024</span>
+          <span style="margin-top:0.4rem;">Mulhacén · Sierra Nevada</span>
+          <span class="mtn-year">2024–2025</span>
+        </div>
+      </div>
+    </div>
+
     <div class="footer">
       <span>matteocarosi.com</span>
       <span>About</span>
@@ -546,15 +641,24 @@
     </div>
     <div class="contact-body">
       <span class="contact-links-label">Elsewhere</span>
-      <a class="contact-link" href="https://instagram.com" target="_blank">
+      <a class="contact-link" href="https://www.instagram.com/matteocarosi_" target="_blank" rel="noopener">
         <div class="contact-link-left">
           <span class="contact-link-name">Instagram</span>
+          <span class="contact-link-sub">@matteocarosi_</span>
         </div>
         <span class="contact-link-arr">→</span>
       </a>
-      <a class="contact-link" href="https://strava.com" target="_blank">
+      <a class="contact-link" href="https://www.strava.com/athletes/3472659" target="_blank" rel="noopener">
         <div class="contact-link-left">
           <span class="contact-link-name">Strava</span>
+          <span class="contact-link-sub">Matteo Carosi</span>
+        </div>
+        <span class="contact-link-arr">→</span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/matteocarosi/" target="_blank" rel="noopener">
+        <div class="contact-link-left">
+          <span class="contact-link-name">LinkedIn</span>
+          <span class="contact-link-sub">Matteo Carosi</span>
         </div>
         <span class="contact-link-arr">→</span>
       </a>
