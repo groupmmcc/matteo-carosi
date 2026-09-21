@@ -18,29 +18,36 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Matteo Carosi",
-    "url": "https://www.matteocarosi.com/",
-    "jobTitle": "Professional Mountain Guide",
-    "homeLocation": {
-      "@type": "Place",
-      "name": "Pico Island, Azores, Portugal"
-    },
-    "founder": {
-      "@type": "Organization",
-      "name": "Tripix Azores",
-      "url": "https://tripixazores.com/"
-    },
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Tripix Azores",
-      "url": "https://tripixazores.com/"
-    },
-    "description": "Professional mountain guide based on Pico Island, Azores. Working on Mount Pico since 2015 with 1,060+ climbs. Founder and CEO of Tripix Azores.",
-    "sameAs": [
-      "https://www.instagram.com/matteocarosi_",
-      "https://www.strava.com/athletes/3472659",
-      "https://www.linkedin.com/in/matteocarosi/"
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://www.matteocarosi.com/#person",
+        "name": "Matteo Carosi",
+        "url": "https://www.matteocarosi.com/",
+        "jobTitle": "Professional Mountain Guide",
+        "description": "Professional mountain guide based on Pico Island, Azores. Working on Mount Pico since 2015 with 1,060+ climbs. Founder and CEO of Tripix Azores.",
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Pico Island, Azores, Portugal"
+        },
+        "worksFor": {
+          "@id": "https://tripixazores.com/#organization"
+        },
+        "sameAs": [
+          "https://www.instagram.com/matteocarosi_",
+          "https://www.strava.com/athletes/3472659",
+          "https://www.linkedin.com/in/matteocarosi/"
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://tripixazores.com/#organization",
+        "name": "Tripix Azores",
+        "url": "https://tripixazores.com/",
+        "founder": {
+          "@id": "https://www.matteocarosi.com/#person"
+        }
+      }
     ]
   }
   </script>
@@ -714,6 +721,52 @@
   </div>
 
   <script>
+    // Metadata per route
+    const META_MAP = {
+      home: {
+        title: 'Matteo Carosi | Professional Mountain Guide · Pico Island, Azores',
+        description: 'Matteo Carosi is a professional mountain guide based on Pico Island, Azores, working on Mount Pico since 2015 with 1,060+ climbs and mountain experience across the Alps, Andes, Atlas Mountains and Iberian Peninsula.',
+        canonical: 'https://www.matteocarosi.com/',
+        ogTitle: 'Matteo Carosi — Professional Mountain Guide',
+        ogDescription: 'Professional mountain guide based on Pico Island, Azores. Working on Mount Pico since 2015 with 1,060+ climbs. Founder of Tripix Azores.',
+        ogUrl: 'https://www.matteocarosi.com/'
+      },
+      about: {
+        title: 'About Matteo Carosi | Mountain Guide · Pico Island',
+        description: 'Matteo Carosi is a professional mountain guide based on Pico Island, working on Mount Pico since 2015. Founder and CEO of Tripix Azores, with 1,060+ Mount Pico climbs.',
+        canonical: 'https://www.matteocarosi.com/about',
+        ogTitle: 'About Matteo Carosi | Mountain Guide',
+        ogDescription: 'Matteo Carosi is a professional mountain guide based on Pico Island, working on Mount Pico since 2015. Founder and CEO of Tripix Azores, with 1,060+ Mount Pico climbs.',
+        ogUrl: 'https://www.matteocarosi.com/about'
+      },
+      mlp: {
+        title: 'Mountain Life Project | Matteo Carosi',
+        description: 'Mountain Life Project by Matteo Carosi — a long-term personal practice shaped by mountain life, discipline, consistency and time in the mountains.',
+        canonical: 'https://www.matteocarosi.com/mountain-life-project',
+        ogTitle: 'Mountain Life Project | Matteo Carosi',
+        ogDescription: 'Mountain Life Project by Matteo Carosi — a long-term personal practice shaped by mountain life, discipline, consistency and time in the mountains.',
+        ogUrl: 'https://www.matteocarosi.com/mountain-life-project'
+      },
+      contact: {
+        title: 'Contact Matteo Carosi | Pico Island, Azores',
+        description: 'Contact Matteo Carosi, professional mountain guide based on Pico Island, Azores.',
+        canonical: 'https://www.matteocarosi.com/contact',
+        ogTitle: 'Contact Matteo Carosi | Pico Island, Azores',
+        ogDescription: 'Contact Matteo Carosi, professional mountain guide based on Pico Island, Azores.',
+        ogUrl: 'https://www.matteocarosi.com/contact'
+      }
+    };
+
+    function updateMeta(id) {
+      const m = META_MAP[id] || META_MAP.home;
+      document.title = m.title;
+      document.querySelector('meta[name="description"]').setAttribute('content', m.description);
+      document.querySelector('link[rel="canonical"]').setAttribute('href', m.canonical);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', m.ogTitle);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', m.ogDescription);
+      document.querySelector('meta[property="og:url"]').setAttribute('content', m.ogUrl);
+    }
+
     // Page map: id → { path, navIndex }
     const PAGE_MAP = {
       home:  { path: '/',                      idx: 0 },
@@ -745,6 +798,7 @@
       if (window.location.pathname !== path) {
         history.pushState({ page: id }, '', path);
       }
+      updateMeta(id);
     }
 
     function toggleMenu() {
@@ -763,6 +817,7 @@
       document.getElementById('page-' + id).classList.add('active');
       setActiveNav(id);
       window.scrollTo(0, 0);
+      updateMeta(id);
     });
 
     // On initial load, show the correct page based on URL path
@@ -774,6 +829,7 @@
         document.getElementById('page-' + id).classList.add('active');
         setActiveNav(id);
       }
+      updateMeta(id);
     })();
   </script>
 
